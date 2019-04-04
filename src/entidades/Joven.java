@@ -8,11 +8,14 @@ package entidades;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 
@@ -21,19 +24,32 @@ import javax.persistence.Temporal;
  * @author Usuario
  */
 @Entity
+@DiscriminatorValue("J")
 public class Joven extends Beneficiario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @OneToMany (mappedBy = "joven")
+    
+    @OneToMany (mappedBy = "joven",cascade = CascadeType.PERSIST)
     private List<Beca> becas;
     
-    @Column(nullable = false)
     private String apellidos;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha_nacimiento;
+    
     private Integer numero_familiares;
+    
     private String situacion_economica;
+    
+    @OneToMany (mappedBy="joven",cascade = CascadeType.PERSIST)
+    private List<Apadrinamientos> apadrinamientos;
 
+    
+    public Joven() {
+        
+    }
+
+    
     public List<Beca> getBecas() {
         return becas;
     }
@@ -74,7 +90,12 @@ public class Joven extends Beneficiario implements Serializable {
         this.situacion_economica = situacion_economica;
     }
 
-    public Joven() {
+    public List<Apadrinamientos> getApadrinamientos() {
+        return apadrinamientos;
+    }
+
+    public void setApadrinamientos(List<Apadrinamientos> apadrinamientos) {
+        this.apadrinamientos = apadrinamientos;
     }
 
     

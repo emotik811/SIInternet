@@ -24,16 +24,18 @@ import javax.persistence.Temporal;
 public class Cartas_paquetes implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    
     @Temporal(javax.persistence.TemporalType.DATE)
     @Column(nullable = false)
     private Date fecha_envio;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date fecha_recepcion;
+    
     @Column(length = 500, nullable = false)
     private String contenido;
     
@@ -108,5 +110,9 @@ public class Cartas_paquetes implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "Cartas_paquetes{" + "id=" + id + '}';
+    }
     
 }

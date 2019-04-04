@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -23,7 +24,35 @@ import javax.persistence.Temporal;
 @Entity
 public class Apadrinamientos implements Serializable {
 
+    private static final long serialVersionUID = 1L;
+    
+    @Id
+    @ManyToOne
+    private Socio socio;
+    
+    @Id
+    @ManyToOne
+    private Joven joven;
+    
+    @OneToMany (mappedBy = "entrega",cascade = CascadeType.PERSIST)
+    private List<Cartas_paquetes> entregas;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(nullable = false)
+    private Date fecha_solicitud;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha_confirmacion;
+    
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha_fin;
+    
+    @Column(length= 300)
+    private String obervaciones;
+    
+    
     public Apadrinamientos() {
+        
     }
 
     public Socio getSocio() {
@@ -82,24 +111,7 @@ public class Apadrinamientos implements Serializable {
         this.obervaciones = obervaciones;
     }
 
-    private static final long serialVersionUID = 1L;
-    @Id
-    @ManyToOne
-    private Socio socio;
-    @Id
-    private Joven joven;
-    @OneToMany (mappedBy = "entrega")
-    private List<Cartas_paquetes> entregas;
-    
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @Column(nullable = false)
-    private Date fecha_solicitud;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_confirmacion;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_fin;
-    @Column(length= 300)
-    private String obervaciones;
+   
 
     
     

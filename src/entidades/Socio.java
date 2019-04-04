@@ -7,12 +7,12 @@ package entidades;
 
 import java.io.Serializable;
 import java.util.List;
-import java.util.Objects;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 /**
@@ -20,17 +20,27 @@ import javax.persistence.OneToMany;
  * @author Usuario
  */
 @Entity
+@DiscriminatorValue("U")
 public class Socio extends Usuario implements Serializable {
 
     private static final long serialVersionUID = 1L;
-    @OneToMany (mappedBy="socio")
+    
+    @OneToMany (mappedBy="socio",cascade = CascadeType.PERSIST)
     private List<Apadrinamientos> apadrinamientos;
-    @Column(nullable = false)
+    
+
     private String nombre;
-    @Column(nullable = false)
+    
+
     private String apellidos;
+    
     private String direccion;
+    
     private String telefono;
+    
+    public Socio() {
+        
+    }
 
     public List<Apadrinamientos> getApadrinamientos() {
         return apadrinamientos;
@@ -71,9 +81,4 @@ public class Socio extends Usuario implements Serializable {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
-
-    public Socio() {
-    }
-
-    
 }

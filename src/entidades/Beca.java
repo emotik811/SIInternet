@@ -31,6 +31,23 @@ public class Beca implements Serializable {
     @ManyToOne
     private Joven joven;
 
+    @Column(nullable = false)
+    private String estado;
+    @Column(nullable = false)
+    private String tipo;
+    private Float cuantia;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    @Column(nullable = false)
+    private Date fecha_peticion;
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date fecha_resolucion;
+
+    
+    
+    
+    public Beca() {
+    }
+    
     public Long getId() {
         return id;
     }
@@ -87,19 +104,6 @@ public class Beca implements Serializable {
         this.fecha_resolucion = fecha_resolucion;
     }
     
-    @Column(nullable = false)
-    private String estado;
-    @Column(nullable = false)
-    private String tipo;
-    private Float cuantia;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    @Column(nullable = false)
-    private Date fecha_peticion;
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date fecha_resolucion;
-
-    public Beca() {
-    }
 
     @Override
     public int hashCode() {
@@ -124,6 +128,11 @@ public class Beca implements Serializable {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "Beca{" + "id=" + id + ", joven=" + joven + ", estado=" + estado + ", tipo=" + tipo + ", cuantia=" + cuantia + ", fecha_peticion=" + fecha_peticion + ", fecha_resolucion=" + fecha_resolucion + '}';
     }
     
     
