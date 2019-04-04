@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,7 +23,14 @@ public class Usuario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String dni;
-
+    
+    @Column(nullable=false, unique = true)
+    private String username;
+    @Column(nullable = false, unique = true)
+    private String mail;
+    @Column (nullable = false)
+    private String password;
+    
     public String getDni() {
         return dni;
     }
@@ -30,7 +38,7 @@ public class Usuario implements Serializable {
     public void setId(String dni) {
         this.dni = dni;
     }
-
+    
     @Override
     public int hashCode() {
         int hash = 0;
@@ -55,5 +63,33 @@ public class Usuario implements Serializable {
     public String toString() {
         return "entidades.Usuario[ id=" + dni + " ]";
     }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getMail() {
+        return mail;
+    }
+
+    public void setMail(String mail) {
+        this.mail = mail;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Usuario() {
+    }
+    
     
 }
