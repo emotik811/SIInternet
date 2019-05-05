@@ -1,0 +1,33 @@
+<ui:composition template ="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">ACOES - INICIAR SESION</ui:define>
+    <ui:define name="contenido">
+        <c:choose>
+            <c:when test="#{empty ctlAutorizacion.usuario}">
+                <h:form>
+                    <table>
+                        <tr>
+                            <td>Usuario: </td>
+                            <td><h:inputText value="#{login.usuario}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Contraseña: </td>
+                            <td><h:inputSecret value="#{login.contraseña}"/></td>
+                        </tr>
+                        <tr>
+                            <td><h:commandButton value="Continuar" action="#{login.autenticar()}" /></td>
+                            <td><h:commandLink value="Registrarme" action="#{login.registrar()}"/></td>
+                        </tr>
+                    </table>
+                </h:form>
+            </c:when>
+            <c:otherwise>
+                <p>Debe salir para entrar como otro usuario</p>
+            </c:otherwise>
+        </c:choose>
+    </ui:define>
+</ui:composition>

@@ -3,52 +3,73 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package entidades;
+package es.acoes.entidades;
 
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.DiscriminatorType;
-import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /**
  *
  * @author Usuario
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn (name = "Discriminacion" ,discriminatorType= DiscriminatorType.CHAR)
-@DiscriminatorValue("U")
+@Table(name = "USUARIO")
 public class Usuario implements Serializable {
+    
+    public enum Rol {
+        SOCIO,
+        ADMINISTRADOR,
+        COORDINADOR
+    }
 
     private static final long serialVersionUID = 1L;
-    
     @Id
+    @Basic(optional = false)
+    @Column(name = "DNI")
     private String dni;
-    
-    @Column(nullable=false, unique = true)
+    @Basic(optional = false)
+    @Column(name = "USERNAME")
     private String username;
-    
-    @Column(nullable = false, unique = true)
+    @Basic(optional = false)
+    @Column(name = "MAIL")
     private String mail;
-    
-    @Column (nullable = false)
+    @Basic(optional = false)
+    @Column(name = "PASSWORD")
     private String password;
-    
-    
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "usuario")
+    private Socio socio;
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
+
     public Usuario() {
         
     }
     
+    
+    
+    public Usuario(String dni, String username, String password, String mail, Rol rol) {
+        this.dni = dni;
+        this.username = username;
+        this.password = password;
+        this.mail = mail;
+        this.rol = rol;
+    }
+
     public String getDni() {
         return dni;
     }
 
-    public void setId(String dni) {
+    public void setDni(String dni) {
         this.dni = dni;
     }
 
@@ -76,6 +97,22 @@ public class Usuario implements Serializable {
         this.password = password;
     }
 
+    public Socio getSocio() {
+        return socio;
+    }
+
+    public void setSocio(Socio socio) {
+        this.socio = socio;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -98,7 +135,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "entidades.Usuario[ id=" + dni + " ]";
+        return "acoestarea1.entidades.Usuario[ dni=" + dni + " ]";
     }
     
 }
