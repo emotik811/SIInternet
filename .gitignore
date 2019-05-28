@@ -1,2 +1,5 @@
-/build/
-/dist/
+/ACOESTareaFinal-ejb/build/
+/ACOESTareaFinal-ejb/dist/
+/ACOESTareaFinal-ejb/nbproject/private/
+/ACOESTareaFinal-war/build/
+/ACOESTareaFinal-war/dist/

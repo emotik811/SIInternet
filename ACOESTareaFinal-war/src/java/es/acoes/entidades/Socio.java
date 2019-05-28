@@ -57,6 +57,10 @@ public class Socio implements Serializable {
         this.direccion = direccion;
         this.telefono = telefono;
     }
+
+    public Socio() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
   
 

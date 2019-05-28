@@ -143,7 +143,7 @@ public class ConsultarApadrinamiento implements Serializable {
         List<Apadrinamiento> aux = new ArrayList<>();
         
         for(Apadrinamiento e : this.ap){
-            if(e.getSocio().getUsuario().getDni() == dni){
+            if(e.getSocio().getDni().equals(dni)){
                 aux.add(e);
             }
         }
@@ -154,7 +154,7 @@ public class ConsultarApadrinamiento implements Serializable {
     public List<CartasPaquetes> getEnviosByDni(String dni){
         List<CartasPaquetes> aux = new ArrayList<>();
         for(Apadrinamiento e : this.ap){
-            if(e.getSocio().getUsuario().getDni() == dni){
+            if(e.getSocio().getDni().equals(dni)){
                
                 for(CartasPaquetes i : e.getCartasPaquetesList()){
                     aux.add(i);

@@ -9,7 +9,9 @@ import es.acoes.entidades.Usuario;
 import java.io.Serializable;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
+import negocio.Negocio;
 
 /**
  *
@@ -20,6 +22,8 @@ import javax.inject.Named;
 public class CtlAutorizacion implements Serializable{
     
     private Usuario usuario;
+    @Inject
+    private Negocio negocio;
     
     public CtlAutorizacion() {
         

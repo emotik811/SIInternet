@@ -49,12 +49,16 @@ public class Apadrinamiento implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "apadrinamiento")
     private List<CartasPaquetes> cartasPaquetesList;
     @JoinColumn(name = "JOVEN_ID_BENEFICIARIO", referencedColumnName = "ID_BENEFICIARIO", insertable = false, updatable = false)
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Joven joven;
     @JoinColumn(name = "SOCIO_DNI", referencedColumnName = "DNI", insertable = false, updatable = false)
     @ManyToOne(optional = false)
     private Socio socio;
 
+    public Apadrinamiento() {
+        
+    }
+    
     public Apadrinamiento(Joven joven, Socio socio) {
         this.joven = joven;
         this.socio = socio;

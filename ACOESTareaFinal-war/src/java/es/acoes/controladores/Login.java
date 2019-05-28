@@ -16,6 +16,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import negocio.Negocio;
 
 /**
  *
@@ -30,15 +31,13 @@ public class Login implements Serializable {
     private List<Usuario> usuarios;
     
     @Inject
+    private Negocio negocio;
+    
+    @Inject
     private CtlAutorizacion ctl;
     
     public Login() {
-        usuarios = new ArrayList<Usuario>();
-        usuarios.add(new Usuario("12345678A","pepe", "asdf", "pepe@gmail.com",Rol.SOCIO));
-        usuarios.add(new Usuario("98765432Z","manolo", "qwer", "manolo@gmail.com",Rol.ADMINISTRADOR));
-        usuarios.add(new Usuario("12345678B","adrian","1234","adrian@lacasa.com",Rol.COORDINADOR));
-        usuarios.add(new Usuario("98765312Z","Jaime", "asdfe", "jaime@gmail.com",Usuario.Rol.SOCIO));
-    }
+        }
 
     public List<Usuario> getUsuarios() {
         return usuarios;
@@ -65,15 +64,13 @@ public class Login implements Serializable {
     }
     
     public String autenticar() {
-        for(Usuario u : usuarios) {
-            if(usuario.equals(u.getUsername()) && contraseña.equals(u.getPassword())){
-                ctl.setUsuario(u);
-                return ctl.home();
-            }
-        }
-        FacesContext ctx = FacesContext.getCurrentInstance();
-        ctx.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "Usuario o contraseña incorrectos", "Usuario o contraseña incorrectos"));
-        return null;
+        
+        Usuario u = new Usuario();
+        u.setUsername(usuario);
+        u.setPassword(contraseña);
+        Usuario us = negocio.iniciarSesion(u);
+        ctl.setUsuario(us);
+        return ctl.home();
     }
     
     public String registrar() {

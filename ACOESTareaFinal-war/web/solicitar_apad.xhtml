@@ -12,14 +12,14 @@
             <table>
                 <tr>
                     <td>
-                        <h:selectBooleanCheckbox/>
+                        <h:selectBooleanCheckbox label="derechos" value="#{solicitarApadrinamiento.derechos}"/>
                         He leido mis derechos y obligaciones
                     </td>
                 </tr>
                 
                 <tr>
                     <td>
-                        <h:commandButton value="Solicitar" action="#{ctlAutorizacion.home()}"/>
+                        <h:commandButton value="Solicitar" action="#{solicitarApadrinamiento.solicitar()}"/>
                     </td>
                 </tr>
             </table>
