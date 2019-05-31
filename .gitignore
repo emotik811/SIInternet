@@ -1,6 +1,3 @@
-/build/
-/dist/
-/ACOESEE-ejb/build/
-/ACOESEE-ejb/dist/
-/ACOESEE-war/build/
-/ACOESEE-war/dist/
+/ACOESEE/nbproject/private/
+/ACOESEE/ACOESEE-ejb/nbproject/private/
+/ACOESEE/ACOESEE-war/nbproject/private/

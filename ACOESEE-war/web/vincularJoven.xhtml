@@ -42,7 +42,7 @@
                 <h:column>
                     <f:facet name="header">
                     </f:facet>
-                    <h:commandLink value="Seleccionar" action="#{ConsultarApadrinamiento.seleccionarJoven(lj)}"/>
+                    <h:commandLink value="Seleccionar" disabled="#{ConsultarApadrinamiento.isApadrinado(lj)}" action="#{ConsultarApadrinamiento.seleccionarJoven(lj)}"/>
                 </h:column>
             
 

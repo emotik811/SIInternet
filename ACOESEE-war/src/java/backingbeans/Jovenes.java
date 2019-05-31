@@ -148,8 +148,8 @@ public class Jovenes implements Serializable {
         this.listaJovenes = jovenes;
     }
     
-    public void eliminarJoven(Joven joven){
-        listaJovenes.remove(joven);
+    public void eliminarJoven(Joven j){
+        negocio.eliminarJoven(j);
     }
     
 

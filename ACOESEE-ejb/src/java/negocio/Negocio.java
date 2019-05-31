@@ -6,6 +6,7 @@
 package negocio;
 
 import entidades.Apadrinamiento;
+import entidades.Envio;
 import entidades.Joven;
 import entidades.Usuario;
 import java.util.List;
@@ -27,10 +28,20 @@ public interface Negocio {
 
     public List<Apadrinamiento> getAllApadrinamientos();
 
-    public void asignarApadrinamiento(Apadrinamiento apadrinamiento, Joven joven);
+    public void asignarApadrinamiento(Apadrinamiento apadrinamiento, Joven joven)throws ACOESException;
 
     public void añadirJoven(Joven j);
 
     public List<Joven> getAllJovenes();
+
+    public void eliminarJoven(Joven j);
+
+    public Boolean isApadrinado(Joven j);
+
+    public void setFechaFin(Apadrinamiento ap);
+
+    public void añadirEnvio(Apadrinamiento apadrinamiento, String contenido,String fecha);
+
+    public List<Envio> getEnviosUsername(String username);
 
 }

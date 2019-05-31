@@ -27,7 +27,7 @@ public class ApadrinamientoPK implements Serializable {
     public ApadrinamientoPK() {
     }
 
-    public ApadrinamientoPK(String socioUsername, int jovenIdJoven) {
+    public ApadrinamientoPK(String socioUsername, Integer jovenIdJoven) {
         this.socioUsername = socioUsername;
         this.jovenIdJoven = jovenIdJoven;
     }

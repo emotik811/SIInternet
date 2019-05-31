@@ -13,6 +13,7 @@ import entidades.Joven;
 import entidades.Socio;
 import entidades.Usuario;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -21,8 +22,11 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import negocio.ACOESException;
 import negocio.Negocio;
 
 /**
@@ -80,6 +84,9 @@ public class ConsultarApadrinamiento implements Serializable {
         this.fechaEnvio = fechaEnvio;
     }
 
+    public Boolean isApadrinado(Joven j) {
+        return negocio.isApadrinado(j);
+    }
 
     
     public List<Apadrinamiento> getAllApadrinamientos() {
@@ -89,7 +96,7 @@ public class ConsultarApadrinamiento implements Serializable {
 
     
     public void finalizar(Apadrinamiento ap){
-        ap.setFechaFin(new Date());
+        negocio.setFechaFin(ap);
         
     }
     
@@ -99,33 +106,16 @@ public class ConsultarApadrinamiento implements Serializable {
     }
     
     public String añadir(){
-        /*int index =ap.indexOf(apadrinamiento);
-        ap.get(index).getEnvioList().add(new Envio(new Date(), contenido,apadrinamiento));*/
+        negocio.añadirEnvio(this.apadrinamiento,this.contenido,this.fechaEnvio);
         return "admin_consultarApadrinamientos.xhtml";
     }
     
     public List<Apadrinamiento> getApadrinamientosByUsername(String username){
-        List<Apadrinamiento> apList = negocio.consultarApadrinamiento(username);
-        List<Apadrinamiento> aux = new ArrayList<>();
-        for(Apadrinamiento apa : apList) {
-            if(apa.getApadrinamientoPK().getJovenIdJoven() != -1) {
-                aux.add(apa);
-            }
-        }
-        return aux;
+        return negocio.consultarApadrinamiento(username);
     }
     
     public List<Envio> getEnviosByUsername(String username){
-        List<Envio> aux = new ArrayList<>();
-        /*for(Apadrinamiento e : this.ap){
-            if(e.getSocio().getUsername().equals(username)){
-               
-                for(Envio i : e.getEnvioList()){
-                    aux.add(i);
-                }
-            }
-        }*/
-        return aux;
+        return negocio.getEnviosUsername(username);
     }
     
     public String vincularJoven(Apadrinamiento ap){
@@ -134,7 +124,11 @@ public class ConsultarApadrinamiento implements Serializable {
     }
     
     public String seleccionarJoven(Joven joven){
-        negocio.asignarApadrinamiento(apadrinamiento,joven);
+        try {
+            negocio.asignarApadrinamiento(apadrinamiento,joven);
+        } catch (ACOESException ex) {
+            FacesMessage fm = new FacesMessage("El socio ya ha sido padrino de este niño");
+            FacesContext.getCurrentInstance().addMessage("login:user", fm);}
         return "admin_consultarApadrinamientos.xhtml";
     }
     

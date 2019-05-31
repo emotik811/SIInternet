@@ -6,6 +6,7 @@
 package entidades;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -59,6 +60,7 @@ public class Apadrinamiento implements Serializable {
     private Socio socio;
 
     public Apadrinamiento() {
+        this.envioList = new ArrayList<>();
     }
 
     public Apadrinamiento(ApadrinamientoPK apadrinamientoPK) {
@@ -66,7 +68,7 @@ public class Apadrinamiento implements Serializable {
         this.envioList = new ArrayList<>();
     }
 
-    public Apadrinamiento(ApadrinamientoPK apadrinamientoPK, Date fechaSolicitud) {
+    public Apadrinamiento(ApadrinamientoPK apadrinamientoPK, Timestamp fechaSolicitud) {
         this.apadrinamientoPK = apadrinamientoPK;
         this.fechaSolicitud = fechaSolicitud;
     }

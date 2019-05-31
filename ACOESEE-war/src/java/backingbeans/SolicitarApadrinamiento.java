@@ -8,6 +8,8 @@ package backingbeans;
 import entidades.Apadrinamiento;
 import entidades.ApadrinamientoPK;
 import entidades.Usuario;
+import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -67,6 +69,8 @@ public class SolicitarApadrinamiento {
                 ap.setFechaSolicitud(new Date());
                 Usuario u = negocio.solicitarApadrinamiento(ap);
                 ctl.setUsuario(u);
+                FacesMessage fm = new FacesMessage("Solicitud Creada Correctamente");
+                FacesContext.getCurrentInstance().addMessage("login:user", fm);
             } catch (IdentificacionFallidaException ex) {
                 FacesMessage fm = new FacesMessage("Contraseña Incorrecta.");
                 FacesContext.getCurrentInstance().addMessage("login:user", fm);
