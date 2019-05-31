@@ -1,0 +1,55 @@
+<ui:composition template="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                    
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">ACOES - Consultar Envios</ui:define>
+    <ui:define name="contenido">
+        <h1>Envios Realizados</h1>
+        <h:form>
+            <h:dataTable id="CartasPaquetes" value="#{ConsultarApadrinamiento.getEnviosByUsername(ctlAutorizacion.usuario.username)}" var="lv" border="1">
+            
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID Envío"/>
+                    </f:facet>
+                    <h:outputText value="#{lv.idEnvios}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Joven"/>
+                    </f:facet>
+                    <h:outputText value="#{lv.apadrinamiento.joven.nombre}"/>
+                    <h:outputText value=" "/>
+                    <h:outputText value="#{lv.apadrinamiento.joven.apellidos}"/>
+                </h:column>
+               
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Contenido"/>
+                    </f:facet>
+                    <h:outputText value="#{lv.contenido}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Envío"/>
+                    </f:facet>
+                    <h:outputText value="#{lv.fechaEnvio}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Recepción"/>
+                    </f:facet>
+                    <h:outputText value="#{lv.fechaRecepcion}"/>
+                </h:column>
+
+            </h:dataTable>
+        </h:form>
+    </ui:define>
+</ui:composition>

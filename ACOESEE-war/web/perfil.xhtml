@@ -1,0 +1,49 @@
+<ui:composition template ="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <ui:define name="title">ACOES - Perfil</ui:define>
+    <ui:define name="contenido">
+        <h1>Perfil Usuario</h1>
+        <h:form>
+            <table>
+                <tr>
+                    <td>Nombre de Usuario: </td>
+                    <td><h:outputText value="#{ctlAutorizacion.usuario.username}"/></td>
+                </tr>
+                <tr>
+                    <td>Email: </td>
+                    <td><h:outputText value="#{ctlAutorizacion.usuario.mail}"/></td>
+                </tr>
+                <tr>
+                    <td>Rol: </td>
+                    <td><h:outputText value="#{ctlAutorizacion.usuario.rol}"/></td>
+                </tr>
+                    <c:if test="#{ctlAutorizacion.usuario.rol == 'SOCIO'}">
+                        <tr>
+                            <td>DNI: </td>
+                            <td><h:outputText value="#{ctlAutorizacion.usuario.socio.dni}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Nombre: </td>
+                            <td><h:outputText value="#{ctlAutorizacion.usuario.socio.nombre}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Apellidos: </td>
+                            <td><h:outputText value="#{ctlAutorizacion.usuario.socio.apellidos}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Direccion: </td>
+                            <td><h:outputText value="#{ctlAutorizacion.usuario.socio.direccion}"/></td>
+                        </tr>
+                        <tr>
+                            <td>Telefono: </td>
+                            <td><h:outputText value="#{ctlAutorizacion.usuario.socio.telefono}"/></td>
+                        </tr>
+                    </c:if>
+                
+            </table>
+        </h:form>
+    </ui:define>
+</ui:composition>

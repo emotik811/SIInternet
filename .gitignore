@@ -1,5 +1,6 @@
-/ACOESTareaFinal-ejb/build/
-/ACOESTareaFinal-ejb/dist/
-/ACOESTareaFinal-ejb/nbproject/private/
-/ACOESTareaFinal-war/build/
-/ACOESTareaFinal-war/dist/
+/build/
+/dist/
+/ACOESEE-ejb/build/
+/ACOESEE-ejb/dist/
+/ACOESEE-war/build/
+/ACOESEE-war/dist/

@@ -1,0 +1,70 @@
+<ui:composition template ="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">ACOES - USUARIOS</ui:define>
+    <ui:define name="contenido">
+        <h1>Lista de Usuarios</h1>
+        <h:form>
+            <h:dataTable id="Usuarios" value="#{ConsultarApadrinamiento.lu}" var="lu" border="1">
+            
+           
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Username"/>
+                    </f:facet>
+                    <h:outputText value="#{lu.username}"/>
+                </h:column>
+                
+                 <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Mail"/>
+                    </f:facet>
+                     <h:outputText value="#{lu.mail}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/>
+                    </f:facet>
+                    <h:outputText value="#{lu.socio.nombre}"/>
+                    <h:outputText value=" "/>
+                    <h:outputText value="#{lu.socio.apellidos}"/>
+               </h:column>
+            <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Dirección"/>
+                    </f:facet>
+                <h:outputText value="#{lu.socio.direccion}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Teléfono"/>
+                    </f:facet>
+                    <h:outputText value="#{lu.socio.telefono}"/>
+                </h:column>
+                
+               <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Rol"/>
+                    </f:facet>
+                   <h:outputText value="#{lu.rol}"/>
+                </h:column>
+   
+                <h:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    <h:commandLink value="Eliminar" action="#{ConsultarApadrinamiento.eliminarUsuario(lu)}"/>
+                </h:column>
+            
+
+            </h:dataTable>
+            
+            
+            
+        </h:form>
+    </ui:define>
+</ui:composition>
