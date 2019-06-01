@@ -44,4 +44,6 @@ public interface Negocio {
 
     public List<Envio> getEnviosUsername(String username);
 
+    public void solicitarBeca(Joven j, String tipo);
+
 }

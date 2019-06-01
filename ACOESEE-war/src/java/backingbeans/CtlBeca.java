@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import negocio.Negocio;
 
 /**
  *
@@ -24,13 +26,25 @@ import javax.inject.Named;
 public class CtlBeca implements Serializable{
     
     private List<Beca> listaBecas = new ArrayList<>();
-    private Integer idJoven;
+    private Joven j;
     private Beca b;
     private Integer idBeca;
     private String tipo;
     private Date fechaPeticion;
+    private List<Joven> jovenesList;
+    
+    @Inject
+    private Negocio negocio;
     
     public CtlBeca(){
+    }
+
+    public List<Joven> getJovenesList() {
+        return negocio.getAllJovenes();
+    }
+
+    public void setJovenesList(List<Joven> jovenesList) {
+        this.jovenesList = jovenesList;
     }
 
     public List<Beca> getListaBecas() {
@@ -42,12 +56,12 @@ public class CtlBeca implements Serializable{
     }
     
 
-    public Integer getIdJoven() {
-        return idJoven;
+    public Joven getJoven() {
+        return j;
     }
 
-    public void setIdJoven(Integer idJoven) {
-        this.idJoven = idJoven;
+    public void setJoven(Joven idJoven) {
+        this.j = idJoven;
     }
 
     public Integer getIdBeca() {
@@ -84,6 +98,7 @@ public class CtlBeca implements Serializable{
     }
     
     public String solicitarBeca(){
+        negocio.solicitarBeca(this.j,this.tipo);
         return "becas.xhtml";
     }
     
@@ -100,5 +115,15 @@ public class CtlBeca implements Serializable{
     public boolean checkEnEspera(Beca beca){
         
         return beca.getEstado().equals(Estado.EN_ESPERA);
+    }
+    
+    public String seleccionarJoven(){
+        
+        return "sel_joven.xhtml";
+    }
+    
+    public String selJoven(Joven j) {
+        this.j = j;
+        return "solicitar_beca.xhtml";
     }
 }

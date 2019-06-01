@@ -12,12 +12,14 @@
             <table>
                 <tr>
                     <td>Joven: </td>
-                    <td><h:inputText value="#{CtlBeca.idJoven}"/></td>
-                </tr>
-                
-                <tr>
-                    <td>Id Beca: </td>
-                    <td><h:outputLabel value="#{CtlBeca.b.idBeca}"/></td>
+                    <td>
+                        <h:outputText value="#{CtlBeca.joven.nombre}" />
+                        <h:outputText value=" " />
+                        <h:outputText value="#{CtlBeca.joven.apellidos}" />
+                    </td>
+                    <td>
+                        <h:commandButton value="Seleccionar Joven" action="#{CtlBeca.seleccionarJoven()}"/>
+                    </td>
                 </tr>
                 <tr>
                     <td>Tipo de Beca: </td>

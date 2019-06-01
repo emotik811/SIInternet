@@ -7,6 +7,7 @@ package negocio;
 
 import entidades.Apadrinamiento;
 import entidades.ApadrinamientoPK;
+import entidades.Beca;
 import entidades.Envio;
 import entidades.Joven;
 import entidades.Usuario;
@@ -52,7 +53,7 @@ public class NegocioImpl implements Negocio{
             throw new CuentaRepetidaException();
         }
         em.persist(u);
-        em.persist(u.getSocio());
+        if(u.getSocio() != null) em.persist(u.getSocio());
     }
 
     @Override
@@ -186,6 +187,19 @@ public class NegocioImpl implements Negocio{
                 aux.add(e);
         }
         return aux;
+    }
+
+    @Override
+    public void solicitarBeca(Joven jo, String tipo) {
+        Joven j = em.find(Joven.class, jo.getIdJoven());
+        Beca b = new Beca();
+        b.setFechaPeticion(new Date());
+        b.setEstado(Beca.Estado.EN_ESPERA);
+        b.setJovenIdJoven(j);
+        b.setTipo(tipo);
+        j.getBecaList().add(b);
+        em.persist(b);
+        em.refresh(j);
     }
     
 }

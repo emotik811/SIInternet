@@ -1,0 +1,79 @@
+<ui:composition template ="/WEB-INF/templates/plantilla.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <ui:define name="title">ACOES - JOVENES</ui:define>
+    <ui:define name="contenido">
+        <h1>Seleccionar un joven para vincular a la solicitud</h1>
+        <h:form>
+            <h:dataTable id="Jóvenes" value="#{Jovenes.jovenes}" var="lj" border="1">
+            
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Código"/>
+                    </f:facet>
+                       #{lj.idJoven}
+                </h:column>
+           
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nombre"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.nombre}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Apellidos"/>
+                    </f:facet>
+                     <h:outputText value="#{lj.apellidos}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha de nacimiento"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.fechaNacimientoSimple}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Localidad"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.localidad}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Dirección"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.direccion}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nº Familiares"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.numeroFamiliares}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Situación económica"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.situacionEconomica}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                    </f:facet>
+                    <h:commandButton value="Seleccionar" action="#{CtlBeca.selJoven(lj)}"/>
+                </h:column>
+            
+            </h:dataTable>
+
+        </h:form>
+    </ui:define>
+</ui:composition>

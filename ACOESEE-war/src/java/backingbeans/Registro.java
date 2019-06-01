@@ -33,7 +33,7 @@ public class Registro {
     private String dni;
     private String usuario;
     private String contraseña;
-    private Rol rol;
+    private String rol;
     
     @Inject
     private Negocio negocio;
@@ -61,11 +61,11 @@ public class Registro {
         this.contraseña = contraseña;
     }
     
-    public Rol getRol() {
+    public String getRol() {
         return rol;
     }
 
-    public void setRol(Rol rol) {
+    public void setRol(String rol) {
         this.rol = rol;
     }
 
@@ -139,9 +139,9 @@ public class Registro {
                 Logger.getLogger(Registro.class.getName()).log(Level.SEVERE, null, ex);
             }
         } else {
-            if(this.rol == ADMINISTRADOR) {
+            if(this.rol.equals("ADMINISTRADOR")) {
                 u.setRol(Usuario.Rol.ADMINISTRADOR);
-            } else if(this.rol == COORDINADOR) {
+            } else if(this.rol.equals("COORDINADOR")) {
                 u.setRol(Usuario.Rol.COORDINADOR);
             } else {
                 u.setRol(Usuario.Rol.SOCIO);

@@ -45,7 +45,7 @@
                 <tr>
                     <td>Rol: </td>
                     <td>
-                        <h:selectOneMenu value="#{ctlAutorizacion.usuario.rol}">
+                        <h:selectOneMenu value="#{registro.rol}">
                             <f:selectItem itemValue='ADMINISTRADOR' itemLabel="Administrador"/>
                             <f:selectItem itemValue='COORDINADOR' itemLabel="Coordinador"/>
                             <f:selectItem itemValue='SOCIO' itemLabel="Socio"/>
@@ -54,7 +54,7 @@
                 </tr>
                 </c:if>
                 <tr>
-                    <td><h:commandButton value="Registrarme" action="#{registro.registrar()}"/></td>
+                    <td><h:commandButton value="Registrar" action="#{registro.registrar()}"/></td>
                 </tr>
             </table>
         </h:form>
