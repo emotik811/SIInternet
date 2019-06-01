@@ -49,7 +49,7 @@ public interface Negocio {
     
     public void solicitarBeca(Joven j, String tipo);
     
-    public void confirmarBeca(Beca b,Integer cuantia);
+    public void confirmarBeca(Beca b);
 
     public void rechazarBeca(Beca b);
 

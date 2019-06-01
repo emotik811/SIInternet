@@ -212,12 +212,11 @@ public class NegocioImpl implements Negocio{
     }
     
     @Override
-    public void confirmarBeca(Beca b,Integer cuantia){
+    public void confirmarBeca(Beca b){
         Beca beca = em.find(Beca.class, b.getIdBeca());
 
         beca.setFechaResolucion(new Date());
         beca.setEstado(Estado.ACEPTADA);
-        beca.setCuantia(cuantia);
         
         em.persist(beca);
     }
