@@ -37,14 +37,12 @@ public class Jovenes implements Serializable {
     private String apellidos;
     private String direccion;
     private String localidad;
-    
     private String fechaNacimiento;
     private Integer numeroFamiliares;
     private String situacionEconomica;
     
     @Inject
     private Negocio negocio;
-    
 
     public Jovenes() {
     }
@@ -135,8 +133,6 @@ public class Jovenes implements Serializable {
         return "jovenes.xhtml";
     }
     
-    
-
     public List<Joven> getJovenes() {
         return negocio.getAllJovenes();
     }
@@ -152,9 +148,6 @@ public class Jovenes implements Serializable {
     public void eliminarJoven(Joven j){
         negocio.eliminarJoven(j);
     }
-    
-
-    
     
 }
 

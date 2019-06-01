@@ -6,6 +6,7 @@
 package negocio;
 
 import entidades.Apadrinamiento;
+import entidades.Beca;
 import entidades.Envio;
 import entidades.Joven;
 import entidades.Usuario;
@@ -44,6 +45,12 @@ public interface Negocio {
 
     public List<Envio> getEnviosUsername(String username);
 
+    public List<Beca> getAllBecas();
+    
     public void solicitarBeca(Joven j, String tipo);
+    
+    public void confirmarBeca(Beca b);
+
+    public void rechazarBeca(Beca b);
 
 }

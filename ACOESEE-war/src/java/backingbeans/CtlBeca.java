@@ -30,6 +30,7 @@ public class CtlBeca implements Serializable{
     private Beca b;
     private Integer idBeca;
     private String tipo;
+    private Integer cuantia;
     private Date fechaPeticion;
     private List<Joven> jovenesList;
     
@@ -38,7 +39,7 @@ public class CtlBeca implements Serializable{
     
     public CtlBeca(){
     }
-
+    
     public List<Joven> getJovenesList() {
         return negocio.getAllJovenes();
     }
@@ -48,7 +49,7 @@ public class CtlBeca implements Serializable{
     }
 
     public List<Beca> getListaBecas() {
-        return listaBecas;
+        return negocio.getAllBecas();
     }
 
     public void setListaBecas(List<Beca> listaBecas) {
@@ -79,6 +80,14 @@ public class CtlBeca implements Serializable{
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    public Integer getCuantia() {
+        return cuantia;
+    }
+
+    public void setCuantia(Integer cuantia) {
+        this.cuantia = cuantia;
+    }
 
     public Date getFechaPeticion() {
         return fechaPeticion;
@@ -92,7 +101,6 @@ public class CtlBeca implements Serializable{
         this.b = b;
     }
     
-
     public void setFechaPeticion(Date fechaPeticion) {
         this.fechaPeticion = fechaPeticion;
     }
@@ -102,14 +110,12 @@ public class CtlBeca implements Serializable{
         return "becas.xhtml";
     }
     
-    public void aceptarSolicitud(Beca beca){
-        beca.setFechaResolucion(new Date());
-        beca.setEstado(Estado.ACEPTADA);
+    public void aceptarSolicitud(Beca b){
+        negocio.confirmarBeca(b);
     }
     
-    public void rechazarSolicitud(Beca beca){
-        beca.setFechaResolucion(new Date());
-        beca.setEstado(Estado.RECHAZADA);
+    public void rechazarSolicitud(Beca b){
+        negocio.rechazarBeca(b);
     }
     
     public boolean checkEnEspera(Beca beca){

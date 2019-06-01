@@ -68,7 +68,6 @@ public class Beca implements Serializable {
     public Beca() {
     }
 
-
     public Beca(String tipo, Estado estado, Date fechaPeticion,Joven j) {
         this.tipo = tipo;
         this.estado = estado;
@@ -107,6 +106,14 @@ public class Beca implements Serializable {
     public void setFechaPeticion(Date fechaPeticion) {
         this.fechaPeticion = fechaPeticion;
     }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaPeticionSimple() {
+        int dia = fechaPeticion.getDate();
+        int mes = fechaPeticion.getMonth()+1;
+        int anyo = fechaPeticion.getYear()+1900;
+        return dia + "/" + mes + "/" + anyo; 
+    }
 
     public Date getFechaResolucion() {
         return fechaResolucion;
@@ -114,6 +121,18 @@ public class Beca implements Serializable {
 
     public void setFechaResolucion(Date fechaResolucion) {
         this.fechaResolucion = fechaResolucion;
+    }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaResolucionSimple() {
+        if(fechaResolucion == null){
+            return null;
+        } else {
+            int dia = fechaResolucion.getDate();
+            int mes = fechaResolucion.getMonth()+1;
+            int anyo = fechaResolucion.getYear()+1900;
+            return dia + "/" + mes + "/" + anyo; 
+        }
     }
 
     public Integer getCuantia() {

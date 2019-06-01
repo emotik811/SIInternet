@@ -8,6 +8,7 @@ package negocio;
 import entidades.Apadrinamiento;
 import entidades.ApadrinamientoPK;
 import entidades.Beca;
+import entidades.Beca.Estado;
 import entidades.Envio;
 import entidades.Joven;
 import entidades.Usuario;
@@ -121,6 +122,7 @@ public class NegocioImpl implements Negocio{
         em.persist(apn);
         em.remove(ap);
     }
+    
     @Override
     public void añadirJoven(Joven j) {
         em.persist(j);
@@ -130,6 +132,7 @@ public class NegocioImpl implements Negocio{
         Query q = em.createQuery("SELECT j FROM Joven j WHERE j.idJoven <> -1");
         return q.getResultList();
     }
+    
     @Override
     public void eliminarJoven(Joven j) {
         Joven jo = em.find(Joven.class, j.getIdJoven());
@@ -188,7 +191,13 @@ public class NegocioImpl implements Negocio{
         }
         return aux;
     }
-
+    
+    @Override
+    public List<Beca> getAllBecas() {
+        Query q = em.createQuery("SELECT b FROM Beca b");
+        return q.getResultList();
+    }
+    
     @Override
     public void solicitarBeca(Joven jo, String tipo) {
         Joven j = em.find(Joven.class, jo.getIdJoven());
@@ -200,6 +209,26 @@ public class NegocioImpl implements Negocio{
         j.getBecaList().add(b);
         em.persist(b);
         em.refresh(j);
+    }
+    
+    @Override
+    public void confirmarBeca(Beca b){
+        Beca beca = em.find(Beca.class, b.getIdBeca());
+
+        beca.setFechaResolucion(new Date());
+        beca.setEstado(Estado.ACEPTADA);
+        
+        em.persist(beca);
+    }
+    
+    @Override
+    public void rechazarBeca(Beca b){
+        Beca beca = em.find(Beca.class, b.getIdBeca());
+
+        beca.setFechaResolucion(new Date());
+        beca.setEstado(Estado.RECHAZADA);
+        
+        em.persist(beca);
     }
     
 }

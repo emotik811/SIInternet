@@ -44,14 +44,14 @@
                     <f:facet name="header">
                         <h:outputText value="Fecha de petición"/>
                     </f:facet>
-                    <h:outputText value="#{lb.fechaPeticion}"/>
+                    <h:outputText value="#{lb.fechaPeticionSimple}"/>
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Fecha resolución"/>
                     </f:facet>
-                    <h:outputText value="#{lb.fechaResolucion}"/>
+                    <h:outputText value="#{lb.fechaResolucionSimple}"/>
                 </h:column>
                 
                 <h:column>
@@ -62,18 +62,17 @@
                 </h:column>
                 
                 <c:if test="#{ctlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
-                    
+                        <h:column>
+                            <h:inputText value="#{CtlBeca.cuantia}" disabled="#{!CtlBeca.checkEnEspera(lb)}"/> 
+                        </h:column>
+                        
+                        <h:column>
+                            <h:commandButton value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.aceptarSolicitud(lb)}"/> 
+                        </h:column>
                     
                         <h:column>
-                    
-                            <h:commandLink value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.aceptarSolicitud(lb)}"/> 
-                
-                        </h:column>
-                        <h:column>
-                            <h:commandLink value="Rechazar" disabled="#{!CtlBeca.checkEnEspera(lb)}" action="#{CtlBeca.rechazarSolicitud(lb)}"/> 
-                 
-                        </h:column>
-                                    
+                            <h:commandButton value="Rechazar" disabled="#{!CtlBeca.checkEnEspera(lb)}" action="#{CtlBeca.rechazarSolicitud(lb)}"/> 
+                        </h:column>                
                     
                 </c:if>
                 
