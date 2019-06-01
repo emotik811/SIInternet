@@ -37,21 +37,12 @@ import negocio.Negocio;
 @SessionScoped
 public class ConsultarApadrinamiento implements Serializable {
     
-    private List<Usuario> lu = new ArrayList<>();
 
     @Inject
     private Negocio negocio;
     
     public ConsultarApadrinamiento() {
        
-    }
-    
-    public List<Usuario> getLu() {
-        return lu;
-    }
-
-    public void setLu(List<Usuario> lu) {
-        this.lu = lu;
     }
     
     private Apadrinamiento apadrinamiento;
@@ -134,10 +125,6 @@ public class ConsultarApadrinamiento implements Serializable {
             FacesMessage fm = new FacesMessage("El socio ya ha sido padrino de este niño");
             FacesContext.getCurrentInstance().addMessage("login:user", fm);}
         return "admin_consultarApadrinamientos.xhtml";
-    }
-    
-    public void eliminarUsuario(Usuario usuario){
-        lu.remove(usuario);
     }
     
 }

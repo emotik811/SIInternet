@@ -47,10 +47,14 @@ public interface Negocio {
 
     public List<Beca> getAllBecas();
     
-    public void solicitarBeca(Joven j, String tipo);
+    public void solicitarBeca(Integer j, String tipo);
     
     public void confirmarBeca(Beca b,Integer cuantia);
 
     public void rechazarBeca(Beca b);
+
+    public List<Usuario> getAllUsers();
+
+    public void eliminarUsuario(Usuario u);
 
 }

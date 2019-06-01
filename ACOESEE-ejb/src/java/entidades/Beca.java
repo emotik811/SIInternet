@@ -147,7 +147,7 @@ public class Beca implements Serializable {
         return jovenIdJoven;
     }
 
-    public void setJovenIdJoven(Joven jovenIdJoven) {
+    public void setjovenIdJoven(Joven jovenIdJoven) {
         this.jovenIdJoven = jovenIdJoven;
     }
 

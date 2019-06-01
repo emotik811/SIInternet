@@ -69,16 +69,9 @@
                 </h:column>
                 
                 <c:if test="#{ctlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
-                    
-                        <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="Cuantía  A Ingresar"/>
-                                </f:facet>
-                            <h:inputText value="#{CtlBeca.cuantia}" disabled="#{lb.cuantia != null}"/> 
-                        </h:column>
                         
                         <h:column>
-                            <h:commandButton value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.aceptarSolicitud(lb,CtlBeca.cuantia)}"/> 
+                            <h:commandButton value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.datosBeca(lb)}"/> 
                         </h:column>
                     
                         <h:column>

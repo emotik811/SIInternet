@@ -106,12 +106,13 @@ public class CtlBeca implements Serializable{
     }
     
     public String solicitarBeca(){
-        negocio.solicitarBeca(this.j,this.tipo);
+        negocio.solicitarBeca(this.j.getIdJoven(),this.tipo);
         return "becas.xhtml";
     }
     
-    public void aceptarSolicitud(Beca b,Integer cuantia){
+    public String aceptarSolicitud(Beca b,Integer cuantia){
         negocio.confirmarBeca(b,cuantia);
+        return "becas.xhtml";
     }
     
     public void rechazarSolicitud(Beca b){
@@ -131,5 +132,10 @@ public class CtlBeca implements Serializable{
     public String selJoven(Joven j) {
         this.j = j;
         return "solicitar_beca.xhtml";
+    }
+    
+    public String datosBeca(Beca b) {
+        this.b = b;
+        return "datosBeca.xhtml";
     }
 }

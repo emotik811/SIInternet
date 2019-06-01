@@ -80,7 +80,7 @@ public class NegocioImpl implements Negocio{
         ap.setApadrinamientoPK(pkap);
         j.getApadrinamientoList().add(ap);
         Usuario us = refrescarUsuario(u);
-        em.refresh(j);
+        em.persist(j);
         em.persist(ap);
         return us;
     }
@@ -199,16 +199,16 @@ public class NegocioImpl implements Negocio{
     }
     
     @Override
-    public void solicitarBeca(Joven jo, String tipo) {
-        Joven j = em.find(Joven.class, jo.getIdJoven());
+    public void solicitarBeca(Integer jo, String tipo) {
+        Joven j = em.find(Joven.class, jo);
         Beca b = new Beca();
         b.setFechaPeticion(new Date());
         b.setEstado(Beca.Estado.EN_ESPERA);
-        b.setJovenIdJoven(j);
+        b.setjovenIdJoven(j);
         b.setTipo(tipo);
         j.getBecaList().add(b);
-        em.persist(b);
         em.refresh(j);
+        em.persist(b);
     }
     
     @Override
@@ -230,6 +230,16 @@ public class NegocioImpl implements Negocio{
         beca.setEstado(Estado.RECHAZADA);
         
         em.persist(beca);
+    }
+
+    @Override
+    public List<Usuario> getAllUsers() {
+        Query q = em.createQuery("Select u From Usuario u");
+        return q.getResultList();
+    }
+    @Override
+    public void eliminarUsuario(Usuario u) {
+        em.remove(em.find(Usuario.class, u.getUsername()));
     }
     
 }

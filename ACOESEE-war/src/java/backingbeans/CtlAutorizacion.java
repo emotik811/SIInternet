@@ -10,10 +10,12 @@ import static entidades.Usuario.Rol.COORDINADOR;
 import static entidades.Usuario.Rol.SOCIO;
 import entidades.Usuario;
 import java.io.Serializable;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import negocio.Negocio;
 
 /**
  *
@@ -23,6 +25,8 @@ import javax.inject.Named;
 @SessionScoped
 public class CtlAutorizacion implements Serializable{
     
+    @Inject
+    private Negocio negocio;
     private Usuario usuario;
     
     public CtlAutorizacion() {
@@ -36,6 +40,16 @@ public class CtlAutorizacion implements Serializable{
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+    
+    public List<Usuario> getUsuarios() {
+        return negocio.getAllUsers();
+    }
+
+    public String eliminarUsuario(Usuario u) {
+        negocio.eliminarUsuario(u);
+        return "usuarios.xhtml";
+    }
+    
     
     public String home() {
         if(null == usuario) return "login.xhtml";

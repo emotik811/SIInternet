@@ -8,7 +8,7 @@
     <ui:define name="contenido">
         <h1>Lista de Usuarios</h1>
         <h:form>
-            <h:dataTable id="Usuarios" value="#{ConsultarApadrinamiento.lu}" var="lu" border="1">
+            <h:dataTable id="Usuarios" value="#{ctlAutorizacion.usuarios}" var="lu" border="1">
             
                 <h:column>
                     <f:facet name="header">
@@ -26,38 +26,39 @@
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Nombre"/>
-                    </f:facet>
-                    <h:outputText value="#{lu.socio.nombre}"/>
-                    <h:outputText value=" "/>
-                    <h:outputText value="#{lu.socio.apellidos}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Dirección"/>
-                    </f:facet>
-                <h:outputText value="#{lu.socio.direccion}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Teléfono"/>
-                    </f:facet>
-                    <h:outputText value="#{lu.socio.telefono}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
                         <h:outputText value="Rol"/>
                     </f:facet>
                    <h:outputText value="#{lu.rol}"/>
                 </h:column>
+                
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Nombre"/>
+                        </f:facet>
+                        <h:outputText value="#{lu.socio.nombre}"/>
+                        <h:outputText value=" "/>
+                        <h:outputText value="#{lu.socio.apellidos}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Dirección"/>
+                        </f:facet>
+                    <h:outputText value="#{lu.socio.direccion}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Teléfono"/>
+                        </f:facet>
+                        <h:outputText value="#{lu.socio.telefono}"/>
+                    </h:column>
+                
    
                 <h:column>
                     <f:facet name="header">
                     </f:facet>
-                    <h:commandButton value="Eliminar" action="#{ConsultarApadrinamiento.eliminarUsuario(lu)}"/>
+                    <h:commandButton value="Eliminar" action="#{ctlAutorizacion.eliminarUsuario(lu)}"/>
                 </h:column>
            
             </h:dataTable>
