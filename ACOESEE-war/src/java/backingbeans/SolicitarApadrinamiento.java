@@ -6,13 +6,8 @@
 package backingbeans;
 
 import entidades.Apadrinamiento;
-import entidades.ApadrinamientoPK;
 import entidades.Usuario;
-import java.sql.Timestamp;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -81,7 +76,7 @@ public class SolicitarApadrinamiento {
                 FacesMessage fm = new FacesMessage("La cuenta esta repetida.");
                 FacesContext.getCurrentInstance().addMessage("login:user", fm);
             } catch (SolicitarApadrinamientoException ex) {
-                FacesMessage fm = new FacesMessage("No se pueden solicitar más apadrinamientos hasta que se resuelva la última.");
+                FacesMessage fm = new FacesMessage("No se pueden solicitar más apadrinamientos hasta que se resuelva la última petición.");
                 FacesContext.getCurrentInstance().addMessage("login:user", fm);
             } catch (ACOESException ex) {
                 FacesMessage fm = new FacesMessage("Error no disponible.");

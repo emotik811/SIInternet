@@ -6,17 +6,15 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="title">ACOES - JOVENES</ui:define>
     <ui:define name="contenido">
-        <h1>Lista de Jovenes</h1>
+        <h1>Lista de Jóvenes</h1>
         <h:form>
             <h:dataTable id="Jóvenes" value="#{Jovenes.jovenes}" var="lj" border="1">
             
-                    <h:column>
+                <h:column>
                     <f:facet name="header">
                         <h:outputText value="Código"/>
                     </f:facet>
-                        <h:outputText value="#{lj.idJoven}"/>
-                       
-
+                    <h:outputText value="#{lj.idJoven}"/>
                 </h:column>
            
                 <h:column>
@@ -30,23 +28,50 @@
                     <f:facet name="header">
                         <h:outputText value="Apellido"/>
                     </f:facet>
-                     <h:outputText value="#{lj.apellidos}"/>
+                    <h:outputText value="#{lj.apellidos}"/>
                 </h:column>
                 
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Fecha de nacimiento"/>
                     </f:facet>
-                   <h:outputText value="#{lj.fechaNacimiento}"/>
-               </h:column>
+                    <h:outputText value="#{lj.fechaNacimientoSimple}"/>
+                </h:column>
 
                 <h:column>
                     <f:facet name="header">
+                        <h:outputText value="Localidad"/>
                     </f:facet>
-                    <h:commandLink value="Eliminar" action="#{Jovenes.eliminarJoven(lj)}"/>
+                    <h:outputText value="#{lj.localidad}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Dirección"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.direccion}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nº Familiares"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.numeroFamiliares}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Situación económica"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.situacionEconomica}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                    </f:facet>
+                        <h:commandButton value="Eliminar" action="#{Jovenes.eliminarJoven(lj)}"/>
                 </h:column>
             
-
             </h:dataTable>
             
             <h:commandButton value="Añadir" action="#{Jovenes.añadirJoven()}"/>

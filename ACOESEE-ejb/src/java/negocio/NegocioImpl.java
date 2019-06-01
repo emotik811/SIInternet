@@ -10,11 +10,9 @@ import entidades.ApadrinamientoPK;
 import entidades.Envio;
 import entidades.Joven;
 import entidades.Usuario;
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
@@ -100,7 +98,6 @@ public class NegocioImpl implements Negocio{
     }
     @Override
     public void asignarApadrinamiento(Apadrinamiento apa, Joven joven) throws ACOESException{
-        
         Joven j = em.find(Joven.class, joven.getIdJoven());
         Apadrinamiento ap = em.find(Apadrinamiento.class, apa.getApadrinamientoPK());
         Apadrinamiento apad = em.find(Apadrinamiento.class, new ApadrinamientoPK(apa.getApadrinamientoPK().getSocioUsername(),joven.getIdJoven()));
@@ -111,7 +108,6 @@ public class NegocioImpl implements Negocio{
         apn.setJoven(j);
         apn.setSocio(ap.getSocio());
         
-        
         apn.setFechaConfirmacion(new Date());
         apn.getJoven().getApadrinamientoList().add(apn);
         apn.getSocio().getApadrinamientoList().add(apn);
@@ -120,6 +116,7 @@ public class NegocioImpl implements Negocio{
         pk1.setSocioUsername(apn.getSocio().getUsername());
         apn.setApadrinamientoPK(pk1);
         apn.setFechaSolicitud(ap.getFechaSolicitud());
+        
         em.persist(apn);
         em.remove(ap);
     }
@@ -157,17 +154,20 @@ public class NegocioImpl implements Negocio{
         Apadrinamiento a = em.find(Apadrinamiento.class, ap.getApadrinamientoPK());
         a.setFechaFin(new Date());
     }
+    
     @Override
-    public void añadirEnvio(Apadrinamiento ap, String contenido,String fecha) {
+    public void añadirEnvio(Apadrinamiento ap, String contenido, String fechaEnvio, String fechaRecepcion) {
         try {
             Apadrinamiento a = em.find(Apadrinamiento.class, ap.getApadrinamientoPK());
             Envio e = new Envio();
             e.setApadrinamiento(a);
             e.setContenido(contenido);
-            e.setFechaRecepcion(new Date());
-            String sDate1=fecha;
-            Date d=new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
-            e.setFechaEnvio(d);
+            String sDate1=fechaEnvio;
+            Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(sDate1);
+            e.setFechaEnvio(d1);
+            String sDate2=fechaRecepcion;
+            Date d2 = new SimpleDateFormat("dd/MM/yyyy").parse(sDate2);
+            e.setFechaRecepcion(d2);
             a.getEnvioList().add(e);
             em.persist(e);
             em.refresh(a);
@@ -176,6 +176,7 @@ public class NegocioImpl implements Negocio{
         }
     }
     
+    @Override
     public List<Envio> getEnviosUsername(String username) {
         Query q = em.createQuery("Select e from Envio e");
         List<Envio> en = q.getResultList();

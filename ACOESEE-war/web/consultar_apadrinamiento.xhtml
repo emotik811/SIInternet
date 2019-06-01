@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="title">ACOES - Consultar Apadrinamientos</ui:define>
     <ui:define name="contenido">
-        <h1>Apadrinamientos Disponibles</h1>
+        <h1>Lista de Apadrinamientos</h1>
         <h:form>
             <h:dataTable id="apadrinamientos" value="#{ConsultarApadrinamiento.getApadrinamientosByUsername(ctlAutorizacion.usuario.username)}" var="ap" border="1">
                 
@@ -20,7 +20,7 @@
 
                      <h:column>
                         <f:facet name="header">
-                            <h:outputText value="Apellido"/>
+                            <h:outputText value="Apellidos"/>
                         </f:facet>
                             <h:outputText value="#{ap.joven.apellidos}"/>
                     </h:column>
@@ -29,8 +29,7 @@
                         <f:facet name="header">
                             <h:outputText value="Fecha de nacimiento"/>
                         </f:facet>
-
-                            <h:outputText value="#{ap.joven.fechaNacimiento}"/>
+                            <h:outputText value="#{ap.joven.fechaNacimientoSimple}"/>
                     </h:column>
                 
      

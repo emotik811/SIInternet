@@ -10,12 +10,11 @@
         <h:form>
             <h:dataTable id="Jóvenes" value="#{Jovenes.jovenes}" var="lj" border="1">
             
-                    <h:column>
+                <h:column>
                     <f:facet name="header">
                         <h:outputText value="Código"/>
                     </f:facet>
                        #{lj.idJoven}
-
                 </h:column>
            
                 <h:column>
@@ -25,9 +24,9 @@
                     <h:outputText value="#{lj.nombre}"/>
                 </h:column>
                 
-                 <h:column>
+                <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Apellido"/>
+                        <h:outputText value="Apellidos"/>
                     </f:facet>
                      <h:outputText value="#{lj.apellidos}"/>
                 </h:column>
@@ -36,20 +35,45 @@
                     <f:facet name="header">
                         <h:outputText value="Fecha de nacimiento"/>
                     </f:facet>
-                   <h:outputText value="#{lj.fechaNacimiento}"/>
-               </h:column>
+                    <h:outputText value="#{lj.fechaNacimientoSimple}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Localidad"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.localidad}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Dirección"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.direccion}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Nº Familiares"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.numeroFamiliares}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Situación económica"/>
+                    </f:facet>
+                    <h:outputText value="#{lj.situacionEconomica}"/>
+                </h:column>
 
                 <h:column>
                     <f:facet name="header">
                     </f:facet>
-                    <h:commandLink value="Seleccionar" disabled="#{ConsultarApadrinamiento.isApadrinado(lj)}" action="#{ConsultarApadrinamiento.seleccionarJoven(lj)}"/>
+                    <h:commandButton value="Seleccionar" disabled="#{ConsultarApadrinamiento.isApadrinado(lj)}" action="#{ConsultarApadrinamiento.seleccionarJoven(lj)}"/>
                 </h:column>
             
-
             </h:dataTable>
-            
-           
-            
+
         </h:form>
     </ui:define>
 </ui:composition>

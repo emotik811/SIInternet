@@ -40,7 +40,7 @@ public interface Negocio {
 
     public void setFechaFin(Apadrinamiento ap);
 
-    public void añadirEnvio(Apadrinamiento apadrinamiento, String contenido,String fecha);
+    public void añadirEnvio(Apadrinamiento apadrinamiento, String contenido,String fechaEnvio, String fechaRecepcion);
 
     public List<Envio> getEnviosUsername(String username);
 

@@ -98,7 +98,15 @@ public class Joven implements Serializable {
     public void setFechaNacimiento(Date fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
-
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaNacimientoSimple() {
+        int dia = fechaNacimiento.getDate();
+        int mes = fechaNacimiento.getMonth()+1;
+        int anyo = fechaNacimiento.getYear()+1900;
+        return dia + "/" + mes + "/" + anyo;
+    }
+    
     public Integer getNumeroFamiliares() {
         return numeroFamiliares;
     }

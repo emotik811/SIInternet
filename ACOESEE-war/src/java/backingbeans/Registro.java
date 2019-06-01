@@ -117,8 +117,6 @@ public class Registro {
         this.dni = dni;
     }
     
-    
-    
     public String registrar() {
         Usuario u = new Usuario();
         u.setUsername(usuario);

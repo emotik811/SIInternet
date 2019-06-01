@@ -103,6 +103,14 @@ public class Apadrinamiento implements Serializable {
     public void setFechaSolicitud(Date fechaSolicitud) {
         this.fechaSolicitud = fechaSolicitud;
     }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaSolicitudSimple() {
+        int dia = fechaSolicitud.getDate();
+        int mes = fechaSolicitud.getMonth()+1;
+        int anyo = fechaSolicitud.getYear()+1900;
+        return dia + "/" + mes + "/" + anyo;
+    }
 
     public Date getFechaConfirmacion() {
         return fechaConfirmacion;
@@ -110,6 +118,18 @@ public class Apadrinamiento implements Serializable {
 
     public void setFechaConfirmacion(Date fechaConfirmacion) {
         this.fechaConfirmacion = fechaConfirmacion;
+    }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaConfirmacionSimple() {
+        if(fechaConfirmacion == null){
+            return null;
+        } else {
+            int dia = fechaConfirmacion.getDate();
+            int mes = fechaConfirmacion.getMonth()+1;
+            int anyo = fechaConfirmacion.getYear()+1900;
+            return dia + "/" + mes + "/" + anyo; 
+        }
     }
 
     public Date getFechaFin() {
@@ -120,6 +140,18 @@ public class Apadrinamiento implements Serializable {
         this.fechaFin = fechaFin;
     }
 
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaFinSimple() {
+        if(fechaFin == null){
+            return null;
+        } else {
+            int dia = fechaFin.getDate();
+            int mes = fechaFin.getMonth()+1;
+            int anyo = fechaFin.getYear()+1900;
+            return dia + "/" + mes + "/" + anyo; 
+        }
+    }
+    
     @XmlTransient
     public List<Envio> getEnvioList() {
         return envioList;

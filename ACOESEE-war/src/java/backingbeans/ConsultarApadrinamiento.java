@@ -42,7 +42,6 @@ public class ConsultarApadrinamiento implements Serializable {
     @Inject
     private Negocio negocio;
     
-    
     public ConsultarApadrinamiento() {
        
     }
@@ -54,11 +53,11 @@ public class ConsultarApadrinamiento implements Serializable {
     public void setLu(List<Usuario> lu) {
         this.lu = lu;
     }
+    
     private Apadrinamiento apadrinamiento;
     private String contenido;
     private String fechaEnvio;
-  
-
+    private String fechaRecepcion;
 
     public Apadrinamiento getApadrinamiento() {
         return apadrinamiento;
@@ -83,21 +82,26 @@ public class ConsultarApadrinamiento implements Serializable {
     public void setFechaEnvio(String fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
     }
+    
+    public String getFechaRecepcion() {
+        return fechaRecepcion;
+    }
+
+    public void setFechaRecepcion(String fechaRecepcion) {
+        this.fechaRecepcion = fechaRecepcion;
+    }
 
     public Boolean isApadrinado(Joven j) {
         return negocio.isApadrinado(j);
     }
 
-    
     public List<Apadrinamiento> getAllApadrinamientos() {
-        
         return negocio.getAllApadrinamientos();
     }
 
     
     public void finalizar(Apadrinamiento ap){
         negocio.setFechaFin(ap);
-        
     }
     
     public String añadirEnvio(Apadrinamiento ap){
@@ -106,7 +110,7 @@ public class ConsultarApadrinamiento implements Serializable {
     }
     
     public String añadir(){
-        negocio.añadirEnvio(this.apadrinamiento,this.contenido,this.fechaEnvio);
+        negocio.añadirEnvio(this.apadrinamiento,this.contenido,this.fechaEnvio,this.fechaRecepcion);
         return "admin_consultarApadrinamientos.xhtml";
     }
     

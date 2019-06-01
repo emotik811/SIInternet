@@ -5,7 +5,7 @@
                 xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:define name="title">ACOES - ENVÍO</ui:define>
     <ui:define name="contenido">
-        <h1>Añadir un nuevo nuevo envío a un socio</h1>
+        <h1>Añadir un nuevo envío para #{ConsultarApadrinamiento.apadrinamiento.joven.nombre}</h1>
         <h:form>
             <table>
                 <tr>
@@ -15,6 +15,10 @@
                 <tr>
                     <td>Fecha Envio (dd/mm/yyyy): </td>
                     <td><h:inputText value="#{ConsultarApadrinamiento.fechaEnvio}"/></td>
+                </tr>
+                <tr>
+                    <td>Fecha Recepción (dd/mm/yyyy): </td>
+                    <td><h:inputText value="#{ConsultarApadrinamiento.fechaRecepcion}"/></td>
                 </tr>
 
                 <tr>

@@ -73,6 +73,18 @@ public class Envio implements Serializable {
     public void setFechaEnvio(Date fechaEnvio) {
         this.fechaEnvio = fechaEnvio;
     }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaEnvioSimple() {
+        if(fechaEnvio == null){
+            return null;
+        } else {
+            int dia = fechaEnvio.getDate();
+            int mes = fechaEnvio.getMonth()+1;
+            int anyo = fechaEnvio.getYear()+1900;
+            return dia + "/" + mes + "/" + anyo; 
+        }
+    }
 
     public String getContenido() {
         return contenido;
@@ -88,6 +100,18 @@ public class Envio implements Serializable {
 
     public void setFechaRecepcion(Date fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
+    }
+    
+    // Método para ver una fecha de forma simplificada. (dd/mm/yyyy)
+    public String getFechaRecepcionSimple() {
+        if(fechaRecepcion == null){
+            return null;
+        } else {
+            int dia = fechaRecepcion.getDate();
+            int mes = fechaRecepcion.getMonth()+1;
+            int anyo = fechaRecepcion.getYear()+1900;
+            return dia + "/" + mes + "/" + anyo; 
+        }
     }
 
     public Apadrinamiento getApadrinamiento() {

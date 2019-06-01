@@ -45,12 +45,10 @@
                 <tr>
                     <td>Rol: </td>
                     <td>
-                        
-                        <h:selectOneMenu  value="#{ctlAutorizacion.usuario.rol}">
-                            <f:selectItem itemValue='SOCIO' itemLabel="Socio"/>
+                        <h:selectOneMenu value="#{ctlAutorizacion.usuario.rol}">
                             <f:selectItem itemValue='ADMINISTRADOR' itemLabel="Administrador"/>
                             <f:selectItem itemValue='COORDINADOR' itemLabel="Coordinador"/>
-                           
+                            <f:selectItem itemValue='SOCIO' itemLabel="Socio"/>
                         </h:selectOneMenu>
                     </td>
                 </tr>

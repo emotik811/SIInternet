@@ -27,7 +27,7 @@
                         </c:if>
                         <c:if test="#{ctlAutorizacion.usuario.rol == 'SOCIO'}">
                             <li><h:commandLink action="#{ctlAutorizacion.solicitarApadrinamiento()}" value="Solicitar Apadrinamiento"/></li>       
-                            <li><h:commandLink action="#{ctlAutorizacion.consultarApadrinamiento()}" value="Consultar Apadrinamiento"/></li>
+                            <li><h:commandLink action="#{ctlAutorizacion.consultarApadrinamiento()}" value="Consultar Apadrinamientos"/></li>
                             <li><h:commandLink action="#{ctlAutorizacion.consultarPaquetes()}" value="Consultar Envíos"/></li>
                         </c:if>
                         <c:if test="#{ctlAutorizacion.usuario.rol == 'COORDINADOR'}">

@@ -9,47 +9,18 @@
     <ui:define name="contenido">
         <h1>Lista de Apadrinamientos</h1>
         <h:form>
-            <h:dataTable id="apadrinamientos" value="#{ConsultarApadrinamiento.allApadrinamientos}" var="ap" border="0">
-                
+            <h:dataTable id="apadrinamientos" value="#{ConsultarApadrinamiento.allApadrinamientos}" var="ap" border="1">
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="Nombre Joven"/>
+                        <h:outputText value="Joven"/>
                     </f:facet>
                     <h:outputText value="#{ap.joven.nombre}"/>
                     <h:outputText value=" "/>
                     <h:outputText value="#{ap.joven.apellidos}"/>
-                    
-                </h:column>
-  
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Joven Fecha de Nacimiento"/>
-                    </f:facet>
-                    <h:outputText value="#{ap.joven.fechaNacimiento}"/>
                 </h:column>
 
-                  <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Fecha Solicitud"/>
-                    </f:facet>
-                      <h:outputText value="#{ap.fechaSolicitud}"/>
-                </h:column>
                 <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Fecha confirmación"/>
-                    </f:facet>
-                    <h:outputText value="#{ap.fechaConfirmacion}"/>
-                </h:column>
-                
-                <h:column>
-                    <f:facet name="header">
-                        <h:outputText value="Fecha de finalización"/>
-                    </f:facet>
-                    <h:outputText value="#{ap.fechaFin}"/>
-                </h:column>
-                
-                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="Socio"/>
                     </f:facet>
@@ -63,11 +34,28 @@
                         <h:outputText value="DNI"/>
                     </f:facet>
                     <h:outputText value="#{ap.socio.dni}"/>
-                     
                 </h:column>
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Solicitud"/>
+                    </f:facet>
+                    <h:outputText value="#{ap.fechaSolicitudSimple}"/>
+                </h:column>
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Confirmación"/>
+                    </f:facet>
+                    <h:outputText value="#{ap.fechaConfirmacionSimple}"/>
+                </h:column>
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Fecha Finalización"/>
+                    </f:facet>
+                    <h:outputText value="#{ap.fechaFinSimple}"/>
+                </h:column>
                 
                 <h:column>
                     <f:facet name="header">
@@ -75,7 +63,6 @@
                     <h:commandButton value="Finalizar" disabled="#{ap.fechaFin != null || ap.apadrinamientoPK.jovenIdJoven == -1}" action="#{ConsultarApadrinamiento.finalizar(ap)}"/>
                 </h:column>
                
-
                 <h:column>
                     <f:facet name="header">
                     </f:facet>
@@ -87,8 +74,6 @@
                     </f:facet>
                     <h:commandButton value="Vincular Joven" disabled="#{ap.apadrinamientoPK.jovenIdJoven != -1}"  action="#{ConsultarApadrinamiento.vincularJoven(ap)}"/>
                 </h:column>
-                
-           
 
             </h:dataTable>
         </h:form>

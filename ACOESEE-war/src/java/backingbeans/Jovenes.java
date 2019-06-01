@@ -123,6 +123,7 @@ public class Jovenes implements Serializable {
             j.setNombre(nombre);
             j.setApellidos(apellidos);
             j.setDireccion(direccion);
+            j.setLocalidad(localidad);
             j.setNumeroFamiliares(numeroFamiliares);
             j.setSituacionEconomica(situacionEconomica);
             Date date = new SimpleDateFormat("dd/MM/yyyy").parse(fechaNacimiento);
