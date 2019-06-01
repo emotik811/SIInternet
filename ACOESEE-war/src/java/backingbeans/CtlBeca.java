@@ -110,8 +110,8 @@ public class CtlBeca implements Serializable{
         return "becas.xhtml";
     }
     
-    public void aceptarSolicitud(Beca b){
-        negocio.confirmarBeca(b);
+    public void aceptarSolicitud(Beca b,Integer cuantia){
+        negocio.confirmarBeca(b,cuantia);
     }
     
     public void rechazarSolicitud(Beca b){

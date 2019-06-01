@@ -61,13 +61,24 @@
                     <h:outputText value="#{lb.estado}"/>
                 </h:column>
                 
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Cuantía"/>
+                    </f:facet>
+                    <h:outputText value="#{lb.cuantia}"/> 
+                </h:column>
+                
                 <c:if test="#{ctlAutorizacion.usuario.rol == 'ADMINISTRADOR'}">
+                    
                         <h:column>
-                            <h:inputText value="#{CtlBeca.cuantia}" disabled="#{!CtlBeca.checkEnEspera(lb)}"/> 
+                                <f:facet name="header">
+                                    <h:outputText value="Cuantía  A Ingresar"/>
+                                </f:facet>
+                            <h:inputText value="#{CtlBeca.cuantia}" disabled="#{lb.cuantia != null}"/> 
                         </h:column>
                         
                         <h:column>
-                            <h:commandButton value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.aceptarSolicitud(lb)}"/> 
+                            <h:commandButton value="Aceptar" disabled="#{!CtlBeca.checkEnEspera(lb)}"  action="#{CtlBeca.aceptarSolicitud(lb,CtlBeca.cuantia)}"/> 
                         </h:column>
                     
                         <h:column>
